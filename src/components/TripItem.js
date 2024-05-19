@@ -1,8 +1,13 @@
-import React from 'react';
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 function TripItem({ trip }) {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate(`/TripsDetail/${trip.id}`);
+  };
   return (
-    <div className="col-md-6 col-lg-4 mb-5">
+    <div className="col-md-6 col-lg-4 mb-5" onClick={handleClick}>
       <div
         className="portfolio-item mx-auto"
         data-bs-toggle="modal"

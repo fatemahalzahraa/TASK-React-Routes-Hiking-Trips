@@ -1,8 +1,19 @@
-import React from 'react';
-import tripsData from '../tripsData';
+import React from "react";
+import tripsData from "../tripsData";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 
 function TripDetail() {
-  const trip = tripsData[0];
+  const { tripId } = useParams();
+
+  const trip = tripsData.find((trip) => {
+    return trip.id == tripId;
+  });
+
+  if (!trip) {
+    return <Navigate to="/Home" />;
+  }
+  // this is another way of navigate ^^ not using on click, the on click that we learned in class
+  // is found in tripItem
   return (
     <div className="modal-dialog modal-xl">
       <div className="modal-content">
